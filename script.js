@@ -65,19 +65,60 @@ document.getElementById("escuro").onclick = function () {
    LEITURA DO TEXTO POR VOZ
    ========================================== */
 
-// Obtém o botão "Ler Página".
+// Lista de vozes disponíveis
+let vozes = [];
+
+// Carrega as vozes do navegador
+function carregarVozes() {
+
+    vozes = speechSynthesis.getVoices();
+
+}
+
+// Alguns navegadores carregam as vozes depois da página
+speechSynthesis.onvoiceschanged = carregarVozes;
+
+// Carrega imediatamente (caso já estejam disponíveis)
+carregarVozes();
+
 document.getElementById("ler").onclick = function () {
 
-    // Obtém o conteúdo do parágrafo identificado pelo id "texto".
+    // Verifica se o navegador suporta síntese de voz
+    if (!('speechSynthesis' in window)) {
+
+        alert("Seu navegador não suporta leitura por voz.");
+
+        return;
+
+    }
+
+    // Cancela qualquer leitura em andamento
+    speechSynthesis.cancel();
+
+    // Obtém o texto
     let texto = document.getElementById("texto").innerText;
 
-    // Cria um objeto de síntese de voz contendo o texto da página.
+    // Cria a fala
     let fala = new SpeechSynthesisUtterance(texto);
 
-    // Define que a leitura será realizada em Português do Brasil.
+    // Configurações da voz
     fala.lang = "pt-BR";
+    fala.rate = 1;      // velocidade
+    fala.pitch = 1;     // tom
+    fala.volume = 1;    // volume
 
-    // Inicia a leitura utilizando o sintetizador de voz do navegador.
+    // Procura uma voz em português
+    let vozPT = vozes.find(v =>
+        v.lang === "pt-BR" ||
+        v.lang.startsWith("pt")
+    );
+
+    // Se existir, utiliza-a
+    if (vozPT) {
+        fala.voice = vozPT;
+    }
+
+    // Inicia a leitura
     speechSynthesis.speak(fala);
 
 };
