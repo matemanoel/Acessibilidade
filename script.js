@@ -60,12 +60,11 @@ document.getElementById("escuro").onclick = function () {
 
 };
 
-
 /* ==========================================
-   LEITURA DO TEXTO POR VOZ
+   LEITURA COMPLETA DA PÁGINA
    ========================================== */
 
-// Lista de vozes disponíveis
+// Armazena as vozes disponíveis
 let vozes = [];
 
 // Carrega as vozes do navegador
@@ -75,16 +74,16 @@ function carregarVozes() {
 
 }
 
-// Alguns navegadores carregam as vozes depois da página
+// Alguns navegadores carregam as vozes após a página
 speechSynthesis.onvoiceschanged = carregarVozes;
 
-// Carrega imediatamente (caso já estejam disponíveis)
+// Tenta carregar imediatamente
 carregarVozes();
 
 document.getElementById("ler").onclick = function () {
 
     // Verifica se o navegador suporta síntese de voz
-    if (!('speechSynthesis' in window)) {
+    if (!("speechSynthesis" in window)) {
 
         alert("Seu navegador não suporta leitura por voz.");
 
@@ -92,30 +91,50 @@ document.getElementById("ler").onclick = function () {
 
     }
 
-    // Cancela qualquer leitura em andamento
+    // Interrompe qualquer leitura anterior
     speechSynthesis.cancel();
 
-    // Obtém o texto
-    let texto = document.getElementById("texto").innerText;
+    // Seleciona todos os elementos de texto da página
+    const elementos = document.querySelectorAll(
+        "h1, h2, h3, h4, h5, h6, p, li, footer"
+    );
 
-    // Cria a fala
+    // Variável que armazenará todo o texto
+    let texto = "";
+
+    // Percorre todos os elementos encontrados
+    elementos.forEach(function(elemento){
+
+        // Remove espaços desnecessários
+        let conteudo = elemento.innerText.trim();
+
+        // Adiciona somente se existir texto
+        if(conteudo !== ""){
+
+            texto += conteudo + ". ";
+
+        }
+
+    });
+
+    // Cria o objeto de fala
     let fala = new SpeechSynthesisUtterance(texto);
 
-    // Configurações da voz
+    // Configurações
     fala.lang = "pt-BR";
-    fala.rate = 1;      // velocidade
-    fala.pitch = 1;     // tom
-    fala.volume = 1;    // volume
+    fala.rate = 1;
+    fala.pitch = 1;
+    fala.volume = 1;
 
     // Procura uma voz em português
     let vozPT = vozes.find(v =>
-        v.lang === "pt-BR" ||
-        v.lang.startsWith("pt")
+        v.lang === "pt-BR" || v.lang.startsWith("pt")
     );
 
-    // Se existir, utiliza-a
-    if (vozPT) {
+    if(vozPT){
+
         fala.voice = vozPT;
+
     }
 
     // Inicia a leitura
