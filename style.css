@@ -1,0 +1,235 @@
+/* ==========================
+   ESTILO GERAL DA PÁGINA
+   ========================== */
+
+body{
+
+    font-family:Arial;
+    /* Define a fonte padrão de todo o site como Arial. */
+
+    margin:0;
+    /* Remove as margens externas padrão do navegador. */
+
+    background:#F5F5F5;
+    /* Define uma cor de fundo cinza bem clara para a página. */
+
+    color:#222;
+    /* Define a cor padrão dos textos como cinza escuro. */
+
+    font-size:18px;
+    /* Define o tamanho padrão da fonte em 18 pixels,
+       facilitando a leitura. */
+
+    transition:.3s;
+    /* Cria uma animação suave de 0,3 segundos sempre que
+       alguma propriedade visual for alterada, como cores
+       no modo escuro ou alto contraste. */
+
+}
+
+/* ==========================
+   CABEÇALHO
+   ========================== */
+
+header{
+
+    background:#1565C0;
+    /* Cor azul do fundo do cabeçalho. */
+
+    color:white;
+    /* Define a cor do texto como branco. */
+
+    padding:20px;
+    /* Adiciona um espaçamento interno de 20 pixels
+       em todos os lados. */
+
+    text-align:center;
+    /* Centraliza o título dentro do cabeçalho. */
+
+}
+
+/* ==========================
+   MENU DE BOTÕES
+   ========================== */
+
+nav{
+
+    display:flex;
+    /* Organiza os botões utilizando Flexbox. */
+
+    justify-content:center;
+    /* Centraliza horizontalmente os botões. */
+
+    gap:10px;
+    /* Define um espaço de 10 pixels entre os botões. */
+
+    padding:20px;
+    /* Adiciona espaçamento interno ao redor dos botões. */
+
+    flex-wrap:wrap;
+    /* Permite que os botões passem para outra linha
+       quando não houver espaço suficiente,
+       tornando o layout responsivo. */
+
+}
+
+/* ==========================
+   BOTÕES
+   ========================== */
+
+button{
+
+    padding:15px;
+    /* Define o espaço interno do botão,
+       aumentando sua área de clique. */
+
+    font-size:18px;
+    /* Define o tamanho do texto do botão. */
+
+    cursor:pointer;
+    /* Altera o cursor para uma mãozinha ao passar sobre o botão,
+       indicando que ele é clicável. */
+
+    border:none;
+    /* Remove a borda padrão do navegador. */
+
+    border-radius:8px;
+    /* Arredonda os cantos do botão. */
+
+    background:#1976D2;
+    /* Define a cor azul de fundo do botão. */
+
+    color:white;
+    /* Define a cor do texto como branco. */
+
+}
+
+/* ==========================
+   EFEITO AO PASSAR O MOUSE
+   ========================== */
+
+button:hover{
+
+    background:#0D47A1;
+    /* Altera a cor do botão quando o usuário passa o mouse,
+       fornecendo um retorno visual da interação. */
+
+}
+
+/* ==========================
+   ACESSIBILIDADE DO TECLADO
+   ========================== */
+
+button:focus{
+
+    outline:4px solid yellow;
+    /* Destaca o botão com uma borda amarela quando ele recebe
+       foco pelo teclado (TAB), facilitando a navegação para
+       usuários que não utilizam o mouse. */
+
+}
+
+/* ==========================
+   CONTEÚDO PRINCIPAL
+   ========================== */
+
+main{
+
+    max-width:900px;
+    /* Limita a largura máxima do conteúdo em 900 pixels,
+       melhorando a legibilidade. */
+
+    margin:auto;
+    /* Centraliza o conteúdo horizontalmente. */
+
+    padding:20px;
+    /* Adiciona espaçamento interno ao conteúdo. */
+
+}
+
+/* ==========================
+   IMAGENS
+   ========================== */
+
+img{
+
+    width:100%;
+    /* Faz a imagem ocupar toda a largura disponível
+       do elemento pai. */
+
+    max-width:500px;
+    /* Limita a largura máxima da imagem em 500 pixels,
+       evitando que fique muito grande em telas largas. */
+
+    display:block;
+    /* Faz a imagem comportar-se como elemento de bloco,
+       permitindo centralização com margin:auto. */
+
+    margin:auto;
+    /* Centraliza a imagem horizontalmente. */
+
+}
+
+/* ==========================
+   RODAPÉ
+   ========================== */
+
+footer{
+
+    padding:20px;
+    /* Adiciona espaçamento interno ao rodapé. */
+
+    text-align:center;
+    /* Centraliza o texto do rodapé. */
+
+}
+
+/* ==========================
+   MODO ALTO CONTRASTE
+   ========================== */
+
+.altoContraste{
+
+    background:black;
+    /* Altera o fundo da página para preto. */
+
+    color:white;
+    /* Altera a cor dos textos para branco,
+       aumentando o contraste visual. */
+
+}
+
+.altoContraste button{
+
+    background:yellow;
+    /* Botões ficam amarelos para maior destaque. */
+
+    color:black;
+    /* Texto preto sobre fundo amarelo,
+       proporcionando excelente contraste. */
+
+}
+
+/* ==========================
+   MODO ESCURO
+   ========================== */
+
+.dark{
+
+    background:#222;
+    /* Define um fundo cinza escuro para reduzir
+       o brilho da tela. */
+
+    color:white;
+    /* Define os textos na cor branca para facilitar
+       a leitura sobre o fundo escuro. */
+
+}
+
+.dark button{
+
+    background:#444;
+    /* Altera a cor dos botões para um tom de cinza escuro,
+       mantendo a harmonia com o modo escuro. */
+
+}
